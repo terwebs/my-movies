@@ -27,6 +27,9 @@ ul {
 li {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in;
 }
 
 .movie-info {
@@ -66,14 +69,43 @@ li {
   font-style: italic;
 }
 
-@media screen and (max-width: 800px) {
+.overview {
+  background-color: #fff;
+  color: black;
+  padding: 2rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-height: 100%;
+  transform: translateY(101%);
+  overflow-y: auto;
+  transition: transform 0.3s ease-in;
+}
+
+.overview-title {
+  margin-top: 0;
+  color: black;
+}
+
+li:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.01);
+}
+
+li .show {
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 1024px) {
   ul {
     grid-template-columns: 1fr 1fr;
     gap: 60px 40px;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 640px) {
   ul {
     grid-template-columns: 1fr;
     gap: 60px 40px;
