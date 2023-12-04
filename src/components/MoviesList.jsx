@@ -3,8 +3,8 @@ import { useState } from "react"
 import favorite_movies from "../mocks/favorite_movies.json"
 import Movie from "./Movie"
 
-const fetchURL =
-  "https://api.themoviedb.org/3/search/movie?api_key=e2236eb5db210c6903690fbd931e2356&query="
+const secret = import.meta.env.VITE_SECRET
+const fetchURL = `https://api.themoviedb.org/3/search/movie?api_key=${secret}&query=`
 
 export default function MoviesList() {
   const [movies, setMovies] = useState(favorite_movies.results)
