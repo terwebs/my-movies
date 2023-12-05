@@ -2,6 +2,7 @@
 import { useState } from "react"
 import favorite_movies from "../mocks/favorite_movies.json"
 import Movie from "./Movie"
+import debounce from "just-debounce-it"
 
 const secret = import.meta.env.VITE_SECRET
 const fetchURL = `https://api.themoviedb.org/3/search/movie?api_key=${secret}&query=`
@@ -18,6 +19,7 @@ export default function MoviesList() {
       setMovies(data.results)
     }
   }
+  const debouncedFetchData = debounce((event) => fetchData(event), 500)
 
   return (
     <div className="page-wrapper">
@@ -30,7 +32,7 @@ export default function MoviesList() {
           <input
             type="text"
             placeholder="Search"
-            onChange={fetchData}
+            onChange={debouncedFetchData}
             className="input-search"
             id="search"
           />
@@ -49,11 +51,3 @@ export default function MoviesList() {
     </div>
   )
 }
-
-// function NoResults() {
-//   return <p>no movies found</p>
-// }
-
-// export default function MoviesList() {
-//   return hasMovies ? <ShowMovies /> : <NoResults />
-// }
