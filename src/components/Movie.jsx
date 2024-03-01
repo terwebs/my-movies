@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 
 const imgPath = "https://image.tmdb.org/t/p/w1280"
 
@@ -30,4 +31,8 @@ export default function Movie({ movie }) {
       </li>
     </>
   )
+}
+
+Movie.PropTypes = {
+  movie: PropTypes.object,
 }
